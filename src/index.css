@@ -1,0 +1,807 @@
+:root {
+  /* --- Βασικά --- */
+  --color-paper: #d0d0d2;
+  --color-card: #FFFFFF;
+  --color-line: #E2E8F0;
+  --color-border: #E2E8F0;
+  --color-row-alt: #F8FAFC;
+
+  /* --- Κείμενο --- */
+  --color-ink: #0F172A;
+  --color-ink-light: #1E293B;
+  --color-text: #0F172A;
+  --color-text-muted: #64748B;
+  --color-text-disabled: #94A3B8;
+
+  /* --- Primary (πράσινο) --- */
+  --color-accent: #2c6c1e;
+  --color-accent-dark: #157e1c;
+  --color-accent-disabled: #CBD5E1;
+  --color-focus-ring: rgba(44, 108, 30, 0.18);
+
+  /* --- Σημασιολογικά --- */
+  --color-danger: #EF4444;
+  --color-warning: #F59E0B;
+  --color-success: #22C55E;
+
+  /* --- Header/Navbar (ανοιχτόχρωμο, στο πνεύμα του υπόλοιπου συστήματος) --- */
+  --color-header: #ebe5e5;
+  --color-header-text: #0F172A;
+  --color-header-border: #E2E8F0;
+
+  /* --- Πίνακες --- */
+  --color-table-header-bg: #F8FAFC;
+  --color-table-header-text: #64748B;
+
+  /* --- Hover / Selected --- */
+  --color-row-hover: #F1F5F9;
+  --color-chip-hover: rgba(44, 108, 30, 0.12);
+  --color-hover-bg: #EAF3E6;
+  --color-hover-border: rgba(21, 126, 28, 0.30);
+  --color-selected-bg: #DCFCE7;
+  --color-selected-text: #157e1c;
+
+  --font-display: "Georgia", "Iowan Old Style", serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+:root[data-theme="dark"] {
+  --color-paper: #000000;
+  --color-card: #161616;
+  --color-line: #2E2E2E;
+  --color-border: #2E2E2E;
+
+  --color-ink: #F1F5F9;
+  --color-ink-light: #FFFFFF;
+  --color-text: #E2E8F0;
+  --color-text-muted: #94A3B8;
+  --color-text-disabled: #64748B;
+
+  --color-accent: #22C55E;
+  --color-accent-dark: #16A34A;
+  --color-accent-disabled: #475569;
+  --color-focus-ring: rgba(34, 197, 94, 0.28);
+
+  --color-danger: #F87171;
+  --color-warning: #FBBF24;
+  --color-success: #4ADE80;
+
+  --color-header: #000000;
+  --color-header-text: #F1F5F9;
+  --color-header-border: #2E2E2E;
+
+  --color-table-header-bg: #101010;
+  --color-table-header-text: #94A3B8;
+
+  --color-row-alt: #121212;
+  --color-row-hover: rgba(34, 197, 94, 0.12);
+  --color-chip-hover: rgba(34, 197, 94, 0.22);
+  --color-hover-bg: rgba(34, 197, 94, 0.12);
+  --color-hover-border: rgba(34, 197, 94, 0.35);
+  --color-selected-bg: rgba(34, 197, 94, 0.18);
+  --color-selected-text: #4ADE80;
+
+  /* --- Μεταλλική αίσθηση: gradient "brushed metal" + λάμψη στο hover --- */
+  --metallic-gradient: linear-gradient(150deg, #2b2b2b 0%, #141414 42%, #1c1c1c 60%, #2f2f2f 100%);
+  --metallic-border: #3a3a3a;
+  --glow-color: rgba(34, 197, 94, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-card);
+  color: var(--color-text);
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease, transform 120ms ease;
+}
+
+button:hover {
+  background: var(--color-hover-bg);
+}
+
+button:disabled {
+  background: var(--color-accent-disabled) !important;
+  border-color: var(--color-accent-disabled) !important;
+  color: #FFFFFF !important;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.navbar-icon-link,
+.navbar-action-button {
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-header-text);
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease, transform 120ms ease;
+}
+
+.navbar-icon-link:hover,
+.navbar-action-button:hover {
+  background: var(--color-hover-bg);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.navbar-icon-link:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.profile-cancel-button {
+  background: var(--color-card);
+  border-color: var(--color-line);
+  color: var(--color-text);
+}
+
+.profile-cancel-button:hover {
+  background: var(--color-row-hover);
+  border-color: var(--color-accent-dark);
+  color: var(--color-ink);
+  transform: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  background: var(--color-card);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-disabled);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: none;
+  margin: 0;
+  padding: 0 20px;
+  width: 100%;
+}
+
+/* Admin panel responsive layout */
+.admin-panel .admin-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.admin-panel .admin-sidebar {
+  flex: 0 0 220px;
+}
+.admin-panel .admin-main {
+  flex: 1 1 auto;
+}
+
+@media (max-width: 720px) {
+  .admin-panel .admin-layout {
+    flex-direction: column;
+  }
+  .admin-panel .admin-sidebar {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    overflow-x: auto;
+  }
+  .admin-panel .admin-sidebar button {
+    flex: 0 0 auto;
+  }
+}
+
+.admin-panel table tbody tr:hover > td,
+.container table tbody tr:hover > td {
+  background: var(--color-row-hover);
+}
+
+.admin-panel table tbody tr:hover,
+.container table tbody tr:hover {
+  transition: background 120ms ease;
+}
+
+/* Sidebar button hover / active visuals */
+.sidebar-button {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-text);
+  transition: box-shadow 140ms ease, transform 120ms ease, background 140ms ease, border-color 140ms ease;
+}
+.sidebar-button:hover {
+  border-color: var(--color-hover-border);
+  background: var(--color-hover-bg);
+}
+.sidebar-button.active {
+  background: var(--color-selected-bg);
+  color: var(--color-selected-text);
+  border-color: transparent;
+  font-weight: 700;
+}
+.sidebar-button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.section-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  margin-top: 20px;
+}
+
+.section-card + .section-card {
+  margin-top: 24px;
+}
+
+/* Οπτικό διαχωριστικό ανάμεσα σε δύο ενότητες (π.χ. Email Τμημάτων -> Αναζήτηση Καταλόγου) */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 28px 0 4px;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-line);
+}
+
+.group-chip {
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+/* Τα δύο 3D admin charts, δίπλα-δίπλα στην αρχική σελίδα (μόνο για Admin) */
+.admin-charts-row {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
+.admin-chart-card {
+  flex: 1 1 0;
+  min-width: 0;
+  margin-top: 0;
+  min-height: 760px;
+}
+/* Η .section-card + .section-card (πιο "ειδικός" selector) νικούσε το margin-top:0 του
+   .admin-chart-card παραπάνω, σπρώχνοντας τη 2η κάρτα λίγο πιο κάτω - διορθώνεται εδώ με
+   μεγαλύτερη specificity */
+.admin-charts-row .section-card + .section-card {
+  margin-top: 0;
+}
+@media (max-width: 980px) {
+  .admin-charts-row {
+    flex-direction: column;
+  }
+}
+
+/* --- Leaderboard 3D οριζόντιες μπάρες: κύρια όψη + πάνω όψη + πλαϊνή όψη (γωνία 15°) --- */
+/* =========================================================
+   Leaderboard 3D Premium
+========================================================= */
+
+.bar3d-track {
+  position: relative;
+  height: 28px;
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  overflow: visible;
+
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease,
+    transform .25s ease;
+}
+
+.bar3d-fill {
+  position: relative;
+  height: 100%;
+  min-width: 8px;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(255,255,255,.28) 50%,
+      transparent 65%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      var(--top-color),
+      var(--front-color)
+    );
+
+  background-size: 250% 100%, 100% 100%;
+  background-position: -220% 0, 0 0;
+
+  border-radius: 7px 3px 3px 7px;
+
+  box-shadow:
+    0 0 14px color-mix(in srgb, var(--front-color) 50%, transparent),
+    0 8px 18px rgba(15,23,42,.18);
+
+  transition:
+    width .6s ease,
+    transform .25s ease,
+    filter .25s ease,
+    box-shadow .25s ease,
+    background-position .7s ease;
+}
+
+/* ---------- Πάνω όψη ---------- */
+
+.bar3d-fill::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -6px;
+  height: 6px;
+
+  background: var(--top-color);
+
+  transform: skewX(-15deg);
+
+  border-radius: 6px 4px 0 0;
+}
+
+/* ---------- Πλαϊνή όψη ---------- */
+
+.bar3d-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -6px;
+  width: 6px;
+
+  background: var(--side-color);
+
+  transform: skewY(-15deg);
+}
+
+/* =========================================================
+   Hover
+========================================================= */
+
+.bar3d-track:hover {
+  border-color: var(--color-accent);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(15,23,42,.06);
+}
+
+.bar3d-track:hover .bar3d-fill {
+
+  transform: scaleY(1.08);
+
+  filter: brightness(1.08) saturate(1.15);
+
+  background-position:
+    180% 0,
+    0 0;
+
+  box-shadow:
+    0 0 24px color-mix(in srgb, var(--front-color) 55%, transparent),
+    0 10px 22px rgba(15,23,42,.22);
+}
+
+/* =========================================================
+   Leaderboard Card
+========================================================= */
+
+.leaderboard-list {
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  margin-top: 16px;
+  padding: 20px;
+
+  background: var(--color-paper);
+
+  border-radius: 20px;
+
+  border: 1px solid var(--color-line);
+
+  box-shadow:
+    0 4px 14px rgba(15,23,42,.06);
+
+  min-height: 460px;
+  max-height: 460px;
+
+  overflow-y: auto;
+}
+
+/* =========================================================
+   Hover στις γραμμές
+========================================================= */
+
+.leaderboard-list > div {
+
+  border-radius: 12px;
+
+  padding: 6px 8px;
+
+  transition:
+    transform .22s ease,
+    background .22s ease;
+}
+
+.leaderboard-list > div:hover {
+
+  transform: translateX(6px);
+
+  background: var(--color-row-hover);
+}
+
+/* =========================================================
+   Scrollbar
+========================================================= */
+
+.leaderboard-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.leaderboard-list::-webkit-scrollbar-track {
+  background: var(--color-paper);
+  border-radius: 10px;
+}
+
+.leaderboard-list::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 10px;
+}
+
+.leaderboard-list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+/* Person-to-group εικονίδιο: μαύρο σε light mode, λευκό σε dark mode */
+.person-to-group-icon {
+  color: #000000;
+}
+:root[data-theme="dark"] .person-to-group-icon {
+  color: #ffffff;
+}
+
+/* --- Animation: διακεκομμένες γραμμές που "ρέουν" (marching ants) προς τους φακέλους --- */
+@keyframes emailFlowDash {
+  to { stroke-dashoffset: -26; }
+}
+.email-flow-line {
+  animation: emailFlowDash 1s linear infinite;
+}
+
+/* --- Animation: οι φάκελοι "ανοίγουν" (πάλλονται) όταν φτάνει η γραμμή --- */
+@keyframes emailEnvelopeOpen {
+  0%, 100% { transform: scale(1); }
+  35% { transform: scale(1.12); }
+  55% { transform: scale(0.98); }
+  75% { transform: scale(1.04); }
+}
+.email-envelope {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: emailEnvelopeOpen 2.4s ease-in-out infinite;
+}
+
+/* --- Animation: το "καπάκι" του φακέλου σχεδιάζεται (draw-in), σαν να ανοίγει --- */
+@keyframes emailFlapDraw {
+  0% { stroke-dashoffset: 46; }
+  40% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 0; }
+}
+.email-flap {
+  animation: emailFlapDraw 2.4s ease-in-out infinite;
+}
+
+.group-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent-dark);
+  background: var(--color-chip-hover);
+  color: var(--color-ink);
+  box-shadow: 0 8px 20px rgba(2, 8, 6, 0.16);
+}
+.group-chip.active {
+  border-color: var(--color-accent);
+  background: var(--color-row-hover);
+  box-shadow: 0 0 0 2px var(--color-accent) inset, 0 8px 20px rgba(2, 8, 6, 0.12);
+}
+
+/* Layout δύο στηλών για τις Ομάδες Email: αριστερά στοιβαγμένη λίστα με scroll, δεξιά μεγάλο panel */
+.groups-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-top: 20px;
+}
+.groups-sidebar {
+  flex: 0 0 300px;
+  min-width: 0;
+}
+.groups-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 260px; /* ≈ 5 ομάδες ορατές, μετά εμφανίζεται scrollbar */
+  min-height: 60px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+.groups-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 860px) {
+  .groups-layout {
+    flex-direction: column;
+  }
+  .groups-sidebar {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
+
+/* Dropdown autocomplete προσθήκης email: εμφανίζεται ΔΕΞΙΑ από το panel της ομάδας, στο ίδιο ύψος με το πεδίο */
+.email-suggestions-box {
+  width: 340px;
+  max-width: calc(100vw - 32px);
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 80ms ease;
+}
+
+/* ========================================================================
+   LOGIN - δίστηλο layout: φόρμα αριστερά, animated panel δεξιά
+   ======================================================================== */
+.login-split {
+  display: flex;
+  height: calc(100vh - 65px);
+  overflow: hidden;
+}
+.login-form-side {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  align-items: safe center;
+  justify-content: center;
+  padding: 40px 24px;
+  background: var(--color-paper);
+  height: 100%;
+  overflow-y: auto;
+}
+.login-animation-side {
+  position: relative;
+  flex: 1 1 50%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, var(--color-accent-dark), var(--color-accent), var(--color-accent-dark));
+  background-size: 300% 300%;
+  animation: loginGradientShift 16s ease infinite;
+}
+.login-animation-network {
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+}
+.login-animation-content {
+  position: relative;
+  z-index: 1;
+  padding: 32px;
+}
+.login-float-icon {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.7;
+}
+.login-float-icon-1 {
+  top: 14%;
+  left: 12%;
+  animation: loginFloat 5s ease-in-out infinite;
+}
+.login-float-icon-2 {
+  bottom: 16%;
+  right: 14%;
+  animation: loginFloat 6.5s ease-in-out infinite reverse;
+}
+
+@media (max-width: 860px) {
+  .login-split {
+    flex-direction: column;
+    flex: none;
+    height: auto;
+    overflow: visible;
+  }
+  .login-form-side {
+    height: auto;
+    overflow-y: visible;
+  }
+  .login-animation-side {
+    height: auto;
+    min-height: 260px;
+    order: -1;
+  }
+}
+
+/* ========================================================================
+   ANIMATIONS (login)
+   ======================================================================== */
+@keyframes loginGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes loginFloat {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-14px) rotate(4deg); }
+}
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.35; r: 2.4; }
+  50% { opacity: 0.9; r: 3.4; }
+}
+.network-bg-node {
+  animation: nodePulse 3.6s ease-in-out infinite;
+}
+@keyframes lottieFallbackPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+.login-lottie-wrap {
+  display: flex;
+  justify-content: center;
+}
+.login-lottie-fallback {
+  animation: lottieFallbackPulse 2.2s ease-in-out infinite;
+}
+
+.login-logo-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 20px 28px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-logo-image {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+/* Λίστα ανάλυσης τμημάτων (DepartmentPositionChart3D): 6 γραμμές ορατές, μετά scrollbar.
+   Δεν χρησιμοποιείται σταθερό ύψος ανά γραμμή (κάθε τμήμα μπορεί να "ανοίξει" με διαφορετικό ύψος),
+   οπότε δίνουμε ένα γενναιόδωρο max-height ισοδύναμο με ~6 κλειστές γραμμές. */
+.dept-analysis-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* ========================================================================
+   DARK MODE: Μεταλλική υφή στις κύριες επιφάνειες + λάμψη στο hover
+   ======================================================================== */
+:root[data-theme="dark"] .section-card,
+:root[data-theme="dark"] .kpi-card,
+:root[data-theme="dark"] .group-chip,
+:root[data-theme="dark"] .leaderboard-list,
+:root[data-theme="dark"] .dept-analysis-list > div,
+:root[data-theme="dark"] .sidebar-button,
+:root[data-theme="dark"] button {
+  background-image: var(--metallic-gradient);
+  border-color: var(--metallic-border);
+}
+
+:root[data-theme="dark"] .section-card,
+:root[data-theme="dark"] .kpi-card,
+:root[data-theme="dark"] .group-chip,
+:root[data-theme="dark"] .leaderboard-list,
+:root[data-theme="dark"] .sidebar-button,
+:root[data-theme="dark"] button {
+  transition: box-shadow 220ms ease, border-color 220ms ease, transform 180ms ease, filter 220ms ease;
+}
+
+:root[data-theme="dark"] .section-card:hover,
+:root[data-theme="dark"] .kpi-card:hover,
+:root[data-theme="dark"] .group-chip:hover {
+  border-color: var(--color-accent);
+  box-shadow:
+    0 0 0 1px var(--color-accent),
+    0 0 26px var(--glow-color),
+    0 6px 20px rgba(0, 0, 0, 0.55);
+  filter: brightness(1.08);
+}
+
+:root[data-theme="dark"] button:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  box-shadow:
+    0 0 0 1px var(--color-accent),
+    0 0 18px var(--glow-color);
+  filter: brightness(1.12);
+}
+
+:root[data-theme="dark"] .sidebar-button:hover {
+  filter: brightness(1.1);
+  box-shadow:
+    0 0 0 1px var(--color-accent),
+    0 0 16px var(--glow-color);
+}
+
+:root[data-theme="dark"] .sidebar-button.active {
+  background-image: none;
+  background: var(--color-selected-bg);
+}
+
+/* Το hero banner (login gradient κ.λπ.) και τα primary/accent κουμπιά κρατάνε το δικό τους
+   έντονο πράσινο φόντο - δεν παίρνουν το γκρι μεταλλικό gradient από πάνω */
+:root[data-theme="dark"] button[style*="var(--color-accent)"],
+:root[data-theme="dark"] .dashboard-hero,
+:root[data-theme="dark"] .login-animation-side {
+  background-image: none;
+}
